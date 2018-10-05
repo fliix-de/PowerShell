@@ -4,7 +4,7 @@ Created using Windows AFG found at:
 ;http://www.windowsafg.com
 
 Installation Notes
-Location: UDG
+Location:
 Notes: 
 **************************************************-->
 
@@ -101,8 +101,8 @@ Notes:
 <WillShowUI>Never</WillShowUI>
 </ProductKey>
 <AcceptEula>true</AcceptEula>
-<FullName>udg</FullName>
-<Organization>United Digital Group</Organization>
+<FullName>UserName</FullName>
+<Organization>Company</Organization>
 </UserData>
 </component>
 </settings>
@@ -139,11 +139,11 @@ Notes:
 <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <AutoLogon>
 <Password>
-<Value>UDGvm2018</Value>
+<Value>Password</Value>
 <PlainText>true</PlainText>
 </Password>
 <Enabled>true</Enabled>
-<Username>udg</Username>
+<Username>UserName</Username>
 </AutoLogon>
 <OOBE>
 <HideEULAPage>true</HideEULAPage>
@@ -159,18 +159,18 @@ Notes:
 <LocalAccounts>
 <LocalAccount wcm:action="add">
 <Password>
-<Value>UDGvm2018</Value>
+<Value>Password</Value>
 <PlainText>true</PlainText>
 </Password>
-<Description>udg Local Admin for VM</Description>
-<DisplayName>udg</DisplayName>
+<Description>UserName Local Admin for VM</Description>
+<DisplayName>UserName</DisplayName>
 <Group>Administrators</Group>
-<Name>udg</Name>
+<Name>UserName</Name>
 </LocalAccount>
 </LocalAccounts>
 </UserAccounts>
-<RegisteredOrganization>United Digital Group</RegisteredOrganization>
-<RegisteredOwner>udg</RegisteredOwner>
+<RegisteredOrganization>Company</RegisteredOrganization>
+<RegisteredOwner>UserName</RegisteredOwner>
 <DisableAutoDaylightTimeSet>false</DisableAutoDaylightTimeSet>
 <FirstLogonCommands>
 <SynchronousCommand wcm:action="add">
@@ -188,7 +188,7 @@ Notes:
 <SynchronousCommand wcm:action="add">
 <Order>3</Order>
 <RequiresUserInput>false</RequiresUserInput>
-<CommandLine>cmd /C wmic useraccount where name="udg" set PasswordExpires=false</CommandLine>
+<CommandLine>cmd /C wmic useraccount where name="UserName" set PasswordExpires=false</CommandLine>
 <Description>Password Never Expires</Description>
 </SynchronousCommand>
 </FirstLogonCommands>
