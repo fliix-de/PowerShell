@@ -2,7 +2,6 @@
 # Date: 05.10.2018
 # Description: Create Hyper-V from Windows 10 ISO with autounattend file
 
-
 ##########################
 ## Variable Declaration ##
 ##########################
@@ -60,10 +59,10 @@ if( -not (Get-VMSwitch -Name $switchName -ErrorAction SilentlyContinue))
 
 .\New-VMFromVHDX.ps1 -VMName $ComputerName -MemoryStartupBytes $MemoryStartupBytes -VMProcessorCount $VMProcessorCount -VMSwitchName $switchName
 
-#Start-Sleep -Seconds 60
+Start-Sleep -Seconds 60
 
 ##########################################
 ## Set RegKey for SCCM Detection Method ##
 ##########################################
 
-#New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType String -Force | Out-Null
+New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType String -Force | Out-Null
