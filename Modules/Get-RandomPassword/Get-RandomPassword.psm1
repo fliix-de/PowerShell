@@ -8,11 +8,11 @@
              [switch] $SpecialCharacter
         )
 
-        $characters = "abcdefghiklmnoprstuvwxyzABCDEFGHKLMNOPRSTUVWXYZ1234567890"
+        $characters = "abcdefghkmnoprstuvwxyzABCDEFGHKLMNPRSTUVWXYZ123456789"
 
         if($SpecialCharacter.IsPresent)
         {
-            $characters = "a$bcdefghi!klmn#oprst$uvwxyzABCDEFGHKLMNO$PRSTUVWX&YZ12345#67890!$&#"
+            $characters = "a$bcdefgh!kmn#oprst$uvwxyzABCDEFGHKLMN$PRSTUVWX&YZ12345#6789!$&#"
         }
 
         for($i=0;$i -lt [int]$length;$i++)
