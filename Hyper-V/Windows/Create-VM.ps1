@@ -7,7 +7,7 @@
 ## Variable Declaration ##
 ##########################
 
-$isoFile = '.\Win10_1809_German_x64.iso'
+$isoFile = 'C:\Users\marc.werner\Downloads\Win10_1809_German_x64.iso'
 
 $ComputerName = $env:computername + "-VM1"
 $AdministratorPassword = "Password"
