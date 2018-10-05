@@ -1,3 +1,5 @@
 # PowerShell
 PowerShell Scripts (Testing)
-# PowerShell
+
+# Playground
+Here you can find some scripts for daily work
