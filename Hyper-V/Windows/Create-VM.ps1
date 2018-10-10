@@ -6,25 +6,36 @@
 ## Variable Declaration ##
 ##########################
 
-$isoFile = 'C:\Users\marc.werner\Downloads\Win10_1809_German_x64.iso'
+$isoFile = '.\Win10_1809_German_x64.iso'
 
 $ComputerName = $env:computername + "-VM1"
-$AdministratorPassword = "Password"
+$AdministratorPassword = "UDGvm2018"
 
 $Version = "Windows10Professional"
 $Edition = "Windows 10 Pro"
 $Locale = "de-DE"
 
+## VM Details ##
+
 $VMProcessorCount = 4
-$MemoryStartupBytes = 4GB
+$MemoryStartupBytes = 2GB
 $VHDXSizeBytes = 75GB
-$switchName = 'vSwitchExternal'
+$switchName = 'vSwitchNAT'
+
+## Network Details ##
+
+$ipAddress = "192.168.222.10"
+$prefix = 24
+$gateway = "192.168.222.1"
+$dns1 = "8.8.8.8"
+$dns2 = "8.8.4.4"
+$networkCategroy = "Private"
 
 ###############################
 ## Detection Method Variable ##
 ###############################
 
-$registryPath = "HKLM:\SOFTWARE\Company"
+$registryPath = "HKLM:\SOFTWARE\UDG"
 $name = "Windows 10 1809 Hyper-V VM"
 $value = "1.0"
 
@@ -48,9 +59,14 @@ $value = "1.0"
 
 if( -not (Get-VMSwitch -Name $switchName -ErrorAction SilentlyContinue))
 {
-    $networkName = (Get-NetAdapter -Physical | Where status -eq 'Up').Name
-
-    New-VMSwitch -name $switchName -NetAdapterName $networkName -AllowManagementOS $true
+    ## Create new Switch for Internal
+    New-VMSwitch -SwitchName $switchName -SwitchType Internal
+    
+    ## Define IP address for Switch
+    New-NetIPAddress -IPAddress 192.168.222.1 -PrefixLength 24 -InterfaceAlias "vEthernet ($switchName)"
+    
+    ## Activate NAT
+    New-NetNat -Name NAT-Network -InternalIPInterfaceAddressPrefix 192.168.222.0/24
 }
 
 ##################################################
@@ -59,7 +75,27 @@ if( -not (Get-VMSwitch -Name $switchName -ErrorAction SilentlyContinue))
 
 .\New-VMFromVHDX.ps1 -VMName $ComputerName -MemoryStartupBytes $MemoryStartupBytes -VMProcessorCount $VMProcessorCount -VMSwitchName $switchName
 
-Start-Sleep -Seconds 60
+Start-Sleep -Seconds 300
+
+##########################
+## Create Session to VM ##
+##########################
+
+$Session = .\network\New-VMSession.ps1 -VMName $ComputerName -AdministratorPassword $AdministratorPassword
+
+###########################
+## Set IP Address for VM ##
+###########################
+
+.\network\Set-NetIPAddressViaSession.ps1 -Session $Session -IPAddress $ipAddress -PrefixLength $prefix -DefaultGateway $gateway -DnsAddresses $dns1,$dns2 -NetworkCategory $networkCategroy
+
+#####################################
+## Enable Remote Management for VM ##
+#####################################
+
+.\network\Enable-RemoteManagementViaSession.ps1 -Session $Session
+
+Remove-PSSession -Session $Session
 
 ##########################################
 ## Set RegKey for SCCM Detection Method ##
