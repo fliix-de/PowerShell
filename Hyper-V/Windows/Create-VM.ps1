@@ -75,30 +75,42 @@ if( -not (Get-VMSwitch -Name $switchName -ErrorAction SilentlyContinue))
 
 .\New-VMFromVHDX.ps1 -VMName $ComputerName -MemoryStartupBytes $MemoryStartupBytes -VMProcessorCount $VMProcessorCount -VMSwitchName $switchName
 
-Start-Sleep -Seconds 300
+Start-Sleep -Seconds 240
 
 ##########################
 ## Create Session to VM ##
 ##########################
 
-$Session = .\network\New-VMSession.ps1 -VMName $ComputerName -AdministratorPassword $AdministratorPassword
+$count = 0
 
-###########################
-## Set IP Address for VM ##
-###########################
+do {
+    Start-Sleep -Seconds 60
 
-.\network\Set-NetIPAddressViaSession.ps1 -Session $Session -IPAddress $ipAddress -PrefixLength $prefix -DefaultGateway $gateway -DnsAddresses $dns1,$dns2 -NetworkCategory $networkCategroy
+    $Session = .\network\New-VMSession.ps1 -VMName $ComputerName -AdministratorPassword $AdministratorPassword
 
-#####################################
-## Enable Remote Management for VM ##
-#####################################
+    if($Session)
+    {
+        ###########################
+        ## Set IP Address for VM ##
+        ###########################
 
-.\network\Enable-RemoteManagementViaSession.ps1 -Session $Session
+        .\network\Set-NetIPAddressViaSession.ps1 -Session $Session -IPAddress $ipAddress -PrefixLength $prefix -DefaultGateway $gateway -DnsAddresses $dns1,$dns2 -NetworkCategory $networkCategroy
 
-Remove-PSSession -Session $Session
+        #####################################
+        ## Enable Remote Management for VM ##
+        #####################################
 
-##########################################
-## Set RegKey for SCCM Detection Method ##
-##########################################
+        .\network\Enable-RemoteManagementViaSession.ps1 -Session $Session
 
-New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType String -Force | Out-Null
+        Remove-PSSession -Session $Session
+
+        ##########################################
+        ## Set RegKey for SCCM Detection Method ##
+        ##########################################
+
+        New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType String -Force | Out-Null
+    }
+
+    $count++
+}
+while(-not $Session -or $count -lt 10)

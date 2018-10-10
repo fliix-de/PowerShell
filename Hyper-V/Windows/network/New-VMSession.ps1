@@ -11,4 +11,4 @@ $ErrorActionPreference = 'Stop'
 
 $pass = ConvertTo-SecureString $AdministratorPassword -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential('administrator', $pass)
-New-PSSession -VMName $VMName -Credential $cred
+New-PSSession -VMName $VMName -Credential $cred -ErrorAction SilentlyContinue
