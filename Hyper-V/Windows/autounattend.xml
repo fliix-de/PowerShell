@@ -5,8 +5,8 @@
       <ProductKey>W269N-WFGWX-YVC9B-4J6C9-T83GX</ProductKey>
       <ComputerName>NBW0001051-VM1</ComputerName>
       <DisableAutoDaylightTimeSet>false</DisableAutoDaylightTimeSet>
-      <RegisteredOrganization>United Digital Group</RegisteredOrganization>
-      <RegisteredOwner>UDG Group IT</RegisteredOwner>
+      <RegisteredOrganization><COMPANYNAME></RegisteredOrganization>
+      <RegisteredOwner><OWNERNAME></RegisteredOwner>
       <ShowPowerButtonOnStartScreen>true</ShowPowerButtonOnStartScreen>
       <TimeZone>W. Europe Standard Time</TimeZone>
     </component>
