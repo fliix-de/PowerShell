@@ -7,7 +7,7 @@
 ##########################
 
 $ComputerName = $env:computername + "-VM1"
-$AdministratorPassword = "UDGvm2018"
+$AdministratorPassword = "<PASSWORD>"
 
 $ipAddress = "192.168.222.10"
 $prefix = 24
