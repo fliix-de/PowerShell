@@ -1,6 +1,6 @@
 $vmName = "Ubuntu 18.04"
 $fqdn = "ubuntu-1804"
-$rootPassword = "UDGvm2018"
+$rootPassword = "<PASSWORD>"
 $VMProcessorCount = 2
 $MemoryStartupBytes = 1GB
 $VMSwitchName = 'vSwitchExternal'
