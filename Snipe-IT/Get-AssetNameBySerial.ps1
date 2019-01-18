@@ -23,7 +23,7 @@ $header.Add("Authorization", "Bearer $apiKey")
 
 function getAssetNameBySerial($serial)
 {
-    $snipeAPI = "https://snipe.udg.de/api/v1/hardware?search=$serial"
+    $snipeAPI = "https://snipe.<DOMAIN>.de/api/v1/hardware?search=$serial"
 
     $result = Invoke-RestMethod -Method Get -Uri $snipeAPI -ContentType 'application/json'-Header $header
 
