@@ -1,7 +1,7 @@
 ﻿################################
 
-$company = "MC Shape Bernhausen"
-$logon = "mcsBer"
+$company = "<COMPANY NAME>"
+$logon = "<DOMAIN>"
 
 ################################
 
@@ -73,20 +73,20 @@ function CreateADUser()
     return $UserObject[2] + " / " + $Password
 }
 
-# Create "mcsAdmin" AD User
+# Create "<ADMIN USER>" AD User
 
-$UserObject = @("MCS", "Admin", "mcsAdmin", $company, $logon, 14, $true) # FirstName, LastName, [Username], Company, Logon, Password Length, Password Complexity
-
-CreateADUser -UserObject $UserObject
-
-# Create "Max Hilsdorf" AD User
-
-$UserObject = @("Max", "Hilsdorf", "mhilsdorf", $company, $logon, 8, $false) # FirstName, LastName, [Username], Company, Logon, Password Length, Password Complexity
+$UserObject = @("<ADMIN USER>", "Admin", "<ADMIN USER>", $company, $logon, 14, $true) # FirstName, LastName, [Username], Company, Logon, Password Length, Password Complexity
 
 CreateADUser -UserObject $UserObject
 
-# Create "Theke PC" AD User
+# Create "<ADMIN USER>" AD User
 
-$UserObject = @("Theke", "PC", "theke", $company, $logon, 8, $false) # FirstName, LastName, [Username], Company, Logon, Password Length, Password Complexity
+$UserObject = @("<ADMIN USER>", "<ADMIN USER>", "<ADMIN USER>", $company, $logon, 8, $false) # FirstName, LastName, [Username], Company, Logon, Password Length, Password Complexity
+
+CreateADUser -UserObject $UserObject
+
+# Create "<ADMIN USER>" AD User
+
+$UserObject = @("<ADMIN USER>", "PC", "<ADMIN USER>", $company, $logon, 8, $false) # FirstName, LastName, [Username], Company, Logon, Password Length, Password Complexity
 
 CreateADUser -UserObject $UserObject
