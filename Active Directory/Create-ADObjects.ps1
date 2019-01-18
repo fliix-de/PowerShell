@@ -73,20 +73,10 @@ function CreateADUser()
     return $UserObject[2] + " / " + $Password
 }
 
-# Create "<ADMIN USER>" AD User
-
+# Create "<ADMIN USER>" AD User with special characters
 $UserObject = @("<ADMIN USER>", "<ADMIN USER>", "<ADMIN USER>", $company, $logon, 14, $true) # FirstName, LastName, [Username], Company, Logon, Password Length, Password Complexity
-
 CreateADUser -UserObject $UserObject
 
-# Create "<ADMIN USER>" AD User
-
+# Create "<ADMIN USER>" AD User without special characters
 $UserObject = @("<ADMIN USER>", "<ADMIN USER>", "<ADMIN USER>", $company, $logon, 8, $false) # FirstName, LastName, [Username], Company, Logon, Password Length, Password Complexity
-
-CreateADUser -UserObject $UserObject
-
-# Create "<ADMIN USER>" AD User
-
-$UserObject = @("<ADMIN USER>", "<ADMIN USER>", "<ADMIN USER>", $company, $logon, 8, $false) # FirstName, LastName, [Username], Company, Logon, Password Length, Password Complexity
-
 CreateADUser -UserObject $UserObject
