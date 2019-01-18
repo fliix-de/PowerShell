@@ -1,10 +1,10 @@
 ﻿# Source Path for files
-$source = "C:\Users\marc.werner\Desktop\PH-CRTKL_Finished Families_180829"
-$output = "C:\Users\marc.werner\Desktop\table.html"
+$source = "<SOURCEPATH>"
+$output = "<OUTPUTPATH>"
 
 # For Wordpress date in URL for files
-$urlFolderDate = "2018/09"
-$title = "REVIT files"
+$urlFolderDate = "<WPFOLDERDATE>" # Syntax: 2018/09
+$title = "<TITLE>"
 
 ###############################################################################
 
