@@ -26,7 +26,7 @@ function New-DisabledUser
 
     $securePassword = ConvertTo-SecureString $Password -AsPlainText -Force
 
-    New-LocalUser -Name $Name -Description "$Name UDG Admin" -AccountNeverExpires -Disabled -Password $securePassword
+    New-LocalUser -Name $Name -Description "$Name Admin" -AccountNeverExpires -Disabled -Password $securePassword
 }
 
 function Get-RandomPassword()
