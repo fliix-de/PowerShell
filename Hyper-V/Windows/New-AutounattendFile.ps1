@@ -27,8 +27,8 @@ $template = @'
             <ProductKey></ProductKey>
             <ComputerName></ComputerName>
             <DisableAutoDaylightTimeSet>false</DisableAutoDaylightTimeSet>
-            <RegisteredOrganization>United Digital Group</RegisteredOrganization>
-            <RegisteredOwner>UDG Group IT</RegisteredOwner>
+            <RegisteredOrganization><COMPANYNAME></RegisteredOrganization>
+            <RegisteredOwner><OWNERNAME></RegisteredOwner>
             <ShowPowerButtonOnStartScreen>true</ShowPowerButtonOnStartScreen>
             <TimeZone>W. Europe Standard Time</TimeZone>
         </component>
