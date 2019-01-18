@@ -9,7 +9,7 @@
 $isoFile = '.\Win10_1809_German_x64.iso'
 
 $ComputerName = $env:computername + "-VM1"
-$AdministratorPassword = "UDGvm2018"
+$AdministratorPassword = "<ADMINPASSWORD>"
 
 $Version = "Windows10Professional"
 $Edition = "Windows 10 Pro"
@@ -35,7 +35,7 @@ $networkCategroy = "Private"
 ## Detection Method Variable ##
 ###############################
 
-$registryPath = "HKLM:\SOFTWARE\UDG"
+$registryPath = "HKLM:\SOFTWARE\<COMPANYNAME>"
 $name = "Windows 10 1809 Hyper-V VM"
 $value = "1.0"
 
